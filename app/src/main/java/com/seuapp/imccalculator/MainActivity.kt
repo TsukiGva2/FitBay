@@ -1,61 +1,57 @@
 package com.gabrieldazzi.imclucas
 
+import android.content.Intent
 import android.os.Bundle
-import android.view.animation.AnimationUtils
-import android.widget.*
+import android.widget.Button
+import android.widget.EditText
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.ContextCompat
 
 class MainActivity : AppCompatActivity() {
+
+    private lateinit var etPeso: EditText
+    private lateinit var etAltura: EditText
+    private lateinit var btnCalcular: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val etPeso = findViewById<EditText>(R.id.etPeso)
-        val etAltura = findViewById<EditText>(R.id.etAltura)
-        val btnCalcular = findViewById<Button>(R.id.btnCalcular)
-        val tvResultado = findViewById<TextView>(R.id.tvResultado)
+        etPeso = findViewById(R.id.etPeso)
+        etAltura = findViewById(R.id.etAltura)
+        btnCalcular = findViewById(R.id.btnCalcular)
 
         btnCalcular.setOnClickListener {
-            val anim = AnimationUtils.loadAnimation(this, R.anim.button_click)
-            it.startAnimation(anim)
+            calcularIMC()
+        }
+    }
 
-            val peso = etPeso.text.toString().toDoubleOrNull()
-            val altura = etAltura.text.toString().toDoubleOrNull()
+    private fun calcularIMC() {
+        val pesoStr = etPeso.text.toString()
+        val alturaStr = etAltura.text.toString()
 
-            if (peso != null && altura != null && altura > 0) {
-                val imc = peso / (altura * altura)
-                val status = when {
-                    imc < 18.5 -> "Abaixo do peso"
-                    imc < 24.9 -> "Peso normal"
-                    imc < 29.9 -> "Sobrepeso"
-                    imc < 34.9 -> "Obesidade Grau I"
-                    imc < 39.9 -> "Obesidade Grau II"
-                    else -> "Obesidade Grau III"
-                }
+        val peso = pesoStr.toDoubleOrNull()
+        val altura = alturaStr.toDoubleOrNull()
 
-                val resultado = String.format("IMC: %.2f\nStatus: %s", imc, status)
-                tvResultado.text = resultado
-
-                val cor = when (status) {
-                    "Abaixo do peso" -> R.color.blue
-                    "Peso normal" -> R.color.green
-                    "Sobrepeso" -> R.color.yellow
-                    "Obesidade Grau I" -> R.color.orange
-                    "Obesidade Grau II" -> R.color.deep_orange
-                    "Obesidade Grau III" -> R.color.red
-                    else -> R.color.black
-                }
-
-                tvResultado.setTextColor(ContextCompat.getColor(this, cor))
-
-                val fadeIn = AnimationUtils.loadAnimation(this, android.R.anim.fade_in)
-                tvResultado.startAnimation(fadeIn)
-
-            } else {
-                Toast.makeText(this, "Insira valores válidos!", Toast.LENGTH_SHORT).show()
+        if (peso != null && altura != null && altura > 0) {
+            val imc = peso / (altura * altura)
+            val status = when {
+                imc < 18.5 -> "Abaixo do peso"
+                imc < 24.9 -> "Peso ideal"
+                imc < 29.9 -> "Sobrepeso"
+                imc < 39.9 -> "Obesidade"
+                else -> "Obesidade grave"
             }
+
+            val intent = Intent(this, ResultadoActivity::class.java).apply {
+                putExtra("peso", peso)
+                putExtra("altura", altura)
+                putExtra("imc", imc)
+                putExtra("status", status)
+            }
+            startActivity(intent)
+        } else {
+            Toast.makeText(this, "Insira valores válidos para peso e altura", Toast.LENGTH_SHORT).show()
         }
     }
 }

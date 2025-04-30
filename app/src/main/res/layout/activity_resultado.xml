@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="#121212"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="FitBay :)"
+            android:textSize="28sp"
+            android:textColor="#305c42"
+            android:textStyle="bold"
+            android:layout_gravity="center"
+            android:paddingBottom="24dp" />
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:background="#1E1E1E"
+            android:padding="16dp"
+            android:layout_marginBottom="16dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#1E1E1E"
+            android:layout_gravity="center"
+            android:elevation="4dp">
+
+            <TextView
+                android:text="Tabela IMC"
+                android:textColor="#FFFFFF"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingBottom="8dp" />
+
+            <TextView
+                android:text="Menos que 18.5:  Abaixo do peso"
+                android:textColor="#305c42"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:text="Entre 18.5 e 24.9:  Peso ideal"
+                android:textColor="#305c42"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:text="Entre 25 e 29.9:  Sobrepeso"
+                android:textColor="#305c42"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:text="Entre 30 e 39.9:  Obesidade"
+                android:textColor="#305c42"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:background="#1E1E1E"
+            android:padding="16dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:elevation="4dp">
+
+            <TextView
+                android:text="Tabela de resultados"
+                android:textColor="#FFFFFF"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingBottom="8dp" />
+
+            <TextView
+                android:id="@+id/tvPeso"
+                android:text="Peso: 0 Kg"
+                android:textColor="#305c42"
+                android:textStyle="bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/tvAltura"
+                android:text="Altura: 0 m"
+                android:textColor="#305c42"
+                android:textStyle="bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingBottom="12dp" />
+
+            <TextView
+                android:id="@+id/tvResultadoFinal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#FFFFFF"
+                android:textColor="#000000"
+                android:padding="16dp"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:layout_marginTop="8dp" />
+        </LinearLayout>
+    </LinearLayout>
+</ScrollView>

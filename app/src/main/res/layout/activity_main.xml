@@ -1,57 +1,65 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="32dp"
-    android:gravity="center"
-    android:background="#F5F5F5">
+    android:background="#121212">
 
-    <EditText
-        android:id="@+id/etPeso"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Peso (kg)"
-        android:inputType="numberDecimal"
-        android:background="@drawable/edittext_background"
-        android:padding="12dp"
-        android:textSize="16sp"
-        android:elevation="2dp" />
+        android:orientation="vertical"
+        android:padding="24dp">
 
-    <EditText
-        android:id="@+id/etAltura"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Altura (m)"
-        android:inputType="numberDecimal"
-        android:background="@drawable/edittext_background"
-        android:padding="12dp"
-        android:textSize="16sp"
-        android:elevation="2dp"
-        android:layout_marginTop="16dp" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="FitBay :)"
+            android:textSize="32sp"
+            android:textStyle="bold"
+            android:textColor="#305c42"
+            android:layout_gravity="center"/>
 
-    <Button
-        android:id="@+id/btnCalcular"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Calcular IMC"
-        android:textAllCaps="false"
-        android:backgroundTint="#4CAF50"
-        android:textColor="#FFFFFF"
-        android:layout_marginTop="24dp"
-        android:padding="12dp"
-        android:textSize="16sp"
-        android:background="@drawable/button_background"
-        android:elevation="4dp" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Manter o peso ideal é essencial para sua saúde física e mental. Calcule seu IMC abaixo e veja como está sua saúde!"
+            android:textColor="#CCCCCC"
+            android:textSize="16sp"
+            android:layout_marginTop="12dp"
+            android:textAlignment="center"/>
 
-    <TextView
-        android:id="@+id/tvResultado"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text=""
-        android:textSize="20sp"
-        android:textColor="#333333"
-        android:gravity="center"
-        android:layout_marginTop="32dp"/>
-</LinearLayout>
+        <EditText
+            android:id="@+id/etPeso"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Peso (kg)"
+            android:inputType="numberDecimal"
+            android:layout_marginTop="24dp"
+            android:background="@drawable/edittext_background"
+            android:padding="12dp"
+            android:textColor="#FFFFFF"
+            android:textColorHint="#888888"/>
+
+        <EditText
+            android:id="@+id/etAltura"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Altura (m)"
+            android:inputType="numberDecimal"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/edittext_background"
+            android:padding="12dp"
+            android:textColor="#FFFFFF"
+            android:textColorHint="#888888"/>
+
+        <Button
+            android:id="@+id/btnCalcular"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Calcular IMC"
+            android:textAllCaps="false"
+            android:layout_marginTop="24dp"
+            android:background="@drawable/button_background"
+            android:textColor="#FFFFFF"
+            android:padding="12dp"/>
+    </LinearLayout>
+</ScrollView>
