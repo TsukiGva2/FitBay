@@ -1,0 +1,9 @@
+<resources>
+    <color name="blue">#2196F3</color>
+    <color name="green">#4CAF50</color>
+    <color name="yellow">#FFC107</color>
+    <color name="orange">#FF9800</color>
+    <color name="deep_orange">#F44336</color>
+    <color name="red">#D32F2F</color>
+    <color name="black">#000000</color>
+</resources>

@@ -1,8 +1,10 @@
 package com.gabrieldazzi.imclucas
 
 import android.os.Bundle
+import android.view.animation.AnimationUtils
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 
 class MainActivity : AppCompatActivity() {
 
@@ -16,6 +18,9 @@ class MainActivity : AppCompatActivity() {
         val tvResultado = findViewById<TextView>(R.id.tvResultado)
 
         btnCalcular.setOnClickListener {
+            val anim = AnimationUtils.loadAnimation(this, R.anim.button_click)
+            it.startAnimation(anim)
+
             val peso = etPeso.text.toString().toDoubleOrNull()
             val altura = etAltura.text.toString().toDoubleOrNull()
 
@@ -32,6 +37,22 @@ class MainActivity : AppCompatActivity() {
 
                 val resultado = String.format("IMC: %.2f\nStatus: %s", imc, status)
                 tvResultado.text = resultado
+
+                val cor = when (status) {
+                    "Abaixo do peso" -> R.color.blue
+                    "Peso normal" -> R.color.green
+                    "Sobrepeso" -> R.color.yellow
+                    "Obesidade Grau I" -> R.color.orange
+                    "Obesidade Grau II" -> R.color.deep_orange
+                    "Obesidade Grau III" -> R.color.red
+                    else -> R.color.black
+                }
+
+                tvResultado.setTextColor(ContextCompat.getColor(this, cor))
+
+                val fadeIn = AnimationUtils.loadAnimation(this, android.R.anim.fade_in)
+                tvResultado.startAnimation(fadeIn)
+
             } else {
                 Toast.makeText(this, "Insira valores válidos!", Toast.LENGTH_SHORT).show()
             }
